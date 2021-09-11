@@ -1,21 +1,21 @@
-package persistence.executors;
+package persistence.loaders;
 
+import loaders.IAttributeLoader;
+import loaders.empty.EmptyCollectionLoader;
+import loaders.empty.EmptyPrimitiveCollectionLoader;
 import model.loaders.AddressLoader;
 import model.loaders.HouseLoader;
 import model.loaders.PhoneLoader;
-import model.loaders.user.EmptyUserLoader;
-import persistence.JDBIConnection;
+import model.loaders.UserLoader;
 
 import java.util.function.Consumer;
 
-public class SQLEmptyHouseLoader implements Consumer<HouseLoader<EmptyUserLoader, AddressLoader, PhoneLoader>> {
-    JDBIConnection JDBIConnection;
-    //DI
-    public SQLEmptyHouseLoader(JDBIConnection JDBIConnection){
-        this.JDBIConnection = JDBIConnection;
-    }
+public class SQLHouseWithUserLoader<T> implements
+        Consumer<HouseLoader<UserLoader<PhoneLoader, EmptyCollectionLoader<AddressLoader>, EmptyPrimitiveCollectionLoader>, AddressLoader, PhoneLoader>> {
+
+
     @Override
-    public void accept(HouseLoader<EmptyUserLoader, AddressLoader, PhoneLoader> loader) {
+    public void accept(HouseLoader<UserLoader<PhoneLoader, EmptyCollectionLoader<AddressLoader>, EmptyPrimitiveCollectionLoader>, AddressLoader, PhoneLoader> userLoaderAddressLoaderPhoneLoaderHouseLoader) {
         /*
          * SQL
          * Загрузить сущность House:

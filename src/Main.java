@@ -6,9 +6,9 @@ import model.loaders.PhoneLoader;
 import model.loaders.UserLoader;
 import model.loaders.user.EmptyUserLoader;
 import persistence.JDBIConnection;
-import persistence.executors.SQLEmptyHouseLoader;
-import persistence.executors.SQLEmptyUserLoader;
-import persistence.executors.SQLHouseWithUserLoader;
+import persistence.loaders.SQLEmptyHouseLoader;
+import persistence.loaders.SQLEmptyUserLoader;
+import persistence.loaders.SQLHouseWithUserLoader;
 
 
 public class Main {

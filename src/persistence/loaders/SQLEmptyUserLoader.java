@@ -1,4 +1,4 @@
-package persistence.executors;
+package persistence.loaders;
 
 import loaders.empty.EmptyCollectionLoader;
 import loaders.empty.EmptyPrimitiveCollectionLoader;
