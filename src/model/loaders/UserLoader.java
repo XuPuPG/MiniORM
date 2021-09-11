@@ -1,35 +1,30 @@
 package model.loaders;
 
-import loaders.IAttributeCollectionLoader;
-import loaders.IAttributeLoader;
-import loaders.IPrimitiveCollectionLoader;
 import loaders.empty.EmptyAttributeLoader;
-import loaders.empty.EmptyCollectionLoader;
+import loaders.empty.EmptyEntityCollectionLoader;
 import loaders.empty.EmptyPrimitiveCollectionLoader;
-import model.loaders.user.EmptyUserLoader;
 
-import java.util.function.Consumer;
-
-public class UserLoader<
-        A extends PhoneLoader,
-        B extends IAttributeCollectionLoader<AddressLoader>,
-        C extends IPrimitiveCollectionLoader>
-        implements IAttributeLoader
+public abstract class UserLoader<
+        A extends EmptyPhoneLoader,
+        B extends EmptyEntityCollectionLoader<EmptyAddressLoader>,
+        C extends EmptyPrimitiveCollectionLoader>
+        extends EmptyAttributeLoader
 {
-    A phoneNumberLoader;
+/*    A phoneNumberLoader;
     B addressCollectionLoader;
     C positionsLoader;
 
+    public UserLoader(){}
     public UserLoader(A phoneNumberLoader,
                       B addressCollectionLoader,
                       C positionsLoader) {
         this.phoneNumberLoader = phoneNumberLoader;
         this.addressCollectionLoader = addressCollectionLoader;
         this.positionsLoader = positionsLoader;
-    }
+    }*/
 
-    @Override
-    public EmptyAttributeLoader getAttributesLoader() {
-        return new EmptyAttributeLoader();
-    }
+
+    public abstract void apply();
+
+    //public abstract void consumer(SpecialConsumer<UserLoader<A, B, C>> consumer);
 }

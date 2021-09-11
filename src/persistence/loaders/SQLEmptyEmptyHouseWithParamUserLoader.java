@@ -1,21 +1,15 @@
 package persistence.loaders;
 
-import loaders.IAttributeLoader;
-import loaders.empty.EmptyCollectionLoader;
+import loaders.empty.EmptyEntityCollectionLoader;
 import loaders.empty.EmptyPrimitiveCollectionLoader;
-import model.loaders.AddressLoader;
-import model.loaders.HouseLoader;
-import model.loaders.PhoneLoader;
+import model.loaders.EmptyAddressLoader;
+import model.loaders.EmptyHouseLoader;
+import model.loaders.EmptyPhoneLoader;
 import model.loaders.UserLoader;
 
-import java.util.function.Consumer;
-
-public class SQLHouseWithUserLoader<T> implements
-        Consumer<HouseLoader<UserLoader<PhoneLoader, EmptyCollectionLoader<AddressLoader>, EmptyPrimitiveCollectionLoader>, AddressLoader, PhoneLoader>> {
-
-
+public class SQLEmptyEmptyHouseWithParamUserLoader extends EmptyHouseLoader<UserLoader<EmptyPhoneLoader, EmptyEntityCollectionLoader<EmptyAddressLoader>, EmptyPrimitiveCollectionLoader>, EmptyAddressLoader, EmptyPhoneLoader> {
     @Override
-    public void accept(HouseLoader<UserLoader<PhoneLoader, EmptyCollectionLoader<AddressLoader>, EmptyPrimitiveCollectionLoader>, AddressLoader, PhoneLoader> userLoaderAddressLoaderPhoneLoaderHouseLoader) {
+    public void apply() {
         /*
          * SQL
          * Загрузить сущность House:

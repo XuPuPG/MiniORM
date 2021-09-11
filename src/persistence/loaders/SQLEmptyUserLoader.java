@@ -1,27 +1,16 @@
 package persistence.loaders;
 
-import loaders.empty.EmptyCollectionLoader;
+import loaders.empty.EmptyEntityCollectionLoader;
 import loaders.empty.EmptyPrimitiveCollectionLoader;
-import model.loaders.AddressLoader;
-import model.loaders.PhoneLoader;
+import model.loaders.EmptyAddressLoader;
+import model.loaders.EmptyPhoneLoader;
 import model.loaders.UserLoader;
-import persistence.JDBIConnection;
 
-import java.util.function.Consumer;
+public class SQLEmptyUserLoader extends UserLoader<EmptyPhoneLoader, EmptyEntityCollectionLoader<EmptyAddressLoader>, EmptyPrimitiveCollectionLoader> {
 
-public class SQLEmptyUserLoader implements Consumer<UserLoader<PhoneLoader, EmptyCollectionLoader<AddressLoader>, EmptyPrimitiveCollectionLoader>> {
-
-    JDBIConnection JDBIConnection;
-    //DI
-    public SQLEmptyUserLoader(JDBIConnection JDBIConnection){
-        this.JDBIConnection = JDBIConnection;
-    }
 
     @Override
-    public void accept(
-                    UserLoader<PhoneLoader,
-                    EmptyCollectionLoader<AddressLoader>,
-                    EmptyPrimitiveCollectionLoader> loader) {
+    public void apply() {
         /*
          * SQL
          * Загрузить сущность User:
