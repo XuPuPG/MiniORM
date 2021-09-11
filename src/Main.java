@@ -4,7 +4,7 @@ import model.loaders.EmptyAddressLoader;
 import model.loaders.EmptyHouseLoader;
 import model.loaders.EmptyPhoneLoader;
 import model.loaders.UserLoader;
-import model.loaders.user.EmptyUserLoader;
+import model.loaders.EmptyUserLoader;
 import persistence.JDBIConnection;
 import persistence.loaders.*;
 

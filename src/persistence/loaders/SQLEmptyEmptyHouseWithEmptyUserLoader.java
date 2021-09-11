@@ -3,7 +3,7 @@ package persistence.loaders;
 import model.loaders.EmptyAddressLoader;
 import model.loaders.EmptyHouseLoader;
 import model.loaders.EmptyPhoneLoader;
-import model.loaders.user.EmptyUserLoader;
+import model.loaders.EmptyUserLoader;
 
 public class SQLEmptyEmptyHouseWithEmptyUserLoader extends EmptyHouseLoader<
         EmptyUserLoader,

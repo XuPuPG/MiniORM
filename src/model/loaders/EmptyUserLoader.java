@@ -1,4 +1,4 @@
-package model.loaders.user;
+package model.loaders;
 
 
 import loaders.empty.EmptyAttributeLoader;
