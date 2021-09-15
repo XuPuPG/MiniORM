@@ -13,8 +13,11 @@ import java.util.List;
 //конкретная реализация SQL стратегии репозитория
 public class DefaultHomeSQLPersistenceStrategy implements DefaultSQLPersistence, IPersistenceStrategy<IHome> {
     ResultSet resultSet;
+    OPERATION operation;
+
+    List<IHome> homes = new ArrayList<>();
     SQLHome home;
-    List<? extends IHome> homes = new ArrayList<>();
+
 
     @Override
     public void getQuery() {}
@@ -44,8 +47,6 @@ public class DefaultHomeSQLPersistenceStrategy implements DefaultSQLPersistence,
     public void withEntities(List<IHome> homes) {
         this.homes = homes;
     }
-
-    OPERATION operation;
 
     @Override
     public void withResultSet(ResultSet resultSet) {
