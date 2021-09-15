@@ -2,6 +2,8 @@ package model;
 
 import persistence.IPrimaryKey;
 
+import java.util.Collections;
+
 public class Address implements IPrimaryKey<Integer> {
     int key;
 
@@ -10,6 +12,6 @@ public class Address implements IPrimaryKey<Integer> {
 
     @Override
     public Integer getKey() {
-        return key;
+    return key;
     }
 }

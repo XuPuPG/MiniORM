@@ -8,12 +8,17 @@ import model.loaders.EmptyUserLoader;
 import persistence.JDBIConnection;
 import persistence.loaders.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 
 public class Main {
     public static JDBIConnection jDBIConnection = new JDBIConnection();
 
     public static void main(String[] args) {
-        //в основном, generic тип для
+
+         //в основном, generic тип для
         //классов загрузчиков нужен был для вывода типа из переданных
         //аргументов в конструктор, для удобного создания экземпляра через Ctrl+Alt+V
 
