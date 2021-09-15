@@ -1,13 +1,15 @@
 package ddd.infrastructure.factory;
 
-import ddd.domain.home.HomePersistenceStrategy;
 import ddd.domain.factory.PersistenceStrategyFactory;
-import ddd.infrastructure.ManagedSQLDefaultPersistenceStrategy;
+import ddd.domain.home.IPersistenceStrategy;
+import ddd.infrastructure.DefaultHomeSQLPersistenceStrategy;
+import ddd.infrastructure.SQLHome;
+import ddd.model.entity.IHome;
 
 public class SQLPersistenceStrategyFactory implements PersistenceStrategyFactory {
     @Override
-    public HomePersistenceStrategy getDefaultHomePersistenceStrategy() {
-        return new ManagedSQLDefaultPersistenceStrategy();
+    public IPersistenceStrategy<IHome> getDefaultHomePersistenceStrategy() {
+        return new DefaultHomeSQLPersistenceStrategy();
     }
 
     @Override

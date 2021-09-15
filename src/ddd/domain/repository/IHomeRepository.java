@@ -1,9 +1,10 @@
 package ddd.domain.repository;
 
-import ddd.domain.home.HomePersistenceStrategy;
+import ddd.domain.home.IPersistenceStrategy;
+import ddd.model.entity.IHome;
 
 //интерфейс репозитория уровня домена
 public interface IHomeRepository {
     void findByFiled(String filed);
-    void explain(HomePersistenceStrategy defaultHomePersistenceStrategy);
+    void explain(IPersistenceStrategy<IHome> defaultHomePersistenceStrategy);
 }

@@ -1,8 +1,9 @@
 package ddd.domain.factory;
 
-import ddd.domain.home.HomePersistenceStrategy;
+import ddd.domain.home.IPersistenceStrategy;
+import ddd.model.entity.IHome;
 
 public interface PersistenceStrategyFactory{
-    HomePersistenceStrategy getDefaultHomePersistenceStrategy();
+    <T extends IHome> IPersistenceStrategy<T> getDefaultHomePersistenceStrategy();
     void getSOME_ENTITY_PersistenceStrategy();
 }

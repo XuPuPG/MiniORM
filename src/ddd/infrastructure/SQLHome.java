@@ -1,13 +1,14 @@
 package ddd.infrastructure;
 
-import ddd.domain.home.HomePersistenceStrategy;
+import ddd.domain.home.IPersistenceStrategy;
 import ddd.model.common.IPersistenceEntitySettings;
+import ddd.model.entity.IHome;
 import ddd.model.persistence.PERSIST;
 
 //sql сущность
 public class SQLHome extends HomeImpl implements IPersistenceEntitySettings {
     //стратегия работы с данными
-    ManagedSQLDefaultPersistenceStrategy managedSQLDefaultPersistenceStrategy;
+    IPersistenceStrategy<IHome> managedSQLDefaultPersistenceStrategy;
     PERSIST PERSISTENCE;
 
     @Override
@@ -19,9 +20,10 @@ public class SQLHome extends HomeImpl implements IPersistenceEntitySettings {
     }
 
     @Override
-    public HomePersistenceStrategy getPersistenceStrategy() {
+    public IPersistenceStrategy<IHome> getPersistenceStrategy() {
         return managedSQLDefaultPersistenceStrategy;
     }
+
 
     @Override
     public PERSIST getPersist() {
@@ -29,8 +31,8 @@ public class SQLHome extends HomeImpl implements IPersistenceEntitySettings {
     }
 
     @Override
-    public void setPersistenceStrategy(HomePersistenceStrategy homePersistenceStrategy) {
-        this.managedSQLDefaultPersistenceStrategy = (ManagedSQLDefaultPersistenceStrategy) homePersistenceStrategy;
+    public void setPersistenceStrategy(IPersistenceStrategy<IHome> homePersistenceStrategy) {
+        this.managedSQLDefaultPersistenceStrategy = homePersistenceStrategy;
     }
 
     @Override
