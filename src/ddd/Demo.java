@@ -1,8 +1,9 @@
 package ddd;
 
 import ddd.application.CompositionRoot;
+import ddd.domain.persistence.IPersistenceStrategy;
 import ddd.domain.repository.IHomeRepository;
-import ddd.domain.factory.PersistenceStrategyFactory;
+import ddd.domain.factory.IPersistenceStrategyFactory;
 import ddd.infrastructure.factory.SQLPersistenceStrategyFactory;
 import ddd.model.entity.IHome;
 import ddd.model.persistence.OPERATION;
@@ -15,11 +16,11 @@ public class Demo {
 
         IHome home = compositionRoot.getEntityFactory().createHome();
         IHomeRepository homeRepository = compositionRoot.getRepositoryFactory().getHomeRepository();
-        PersistenceStrategyFactory sqlPersistenceStrategyFactory = new SQLPersistenceStrategyFactory();
+        IPersistenceStrategy<IHome> defaultHomePersistenceStrategy = compositionRoot.getPersistenceStrategyFactory().getDefaultHomePersistenceStrategy();
 
         //стратегия операций над сущностью, загрузка, слияние, обновление, добавление
         //стратегию всегда можно поменять или написать новую для более направленного получения данных из базы
-        home.setPersistenceStrategy(sqlPersistenceStrategyFactory.getDefaultHomePersistenceStrategy());
+        home.setPersistenceStrategy(defaultHomePersistenceStrategy);
         home.getPersistenceStrategy().withEntity(home);
 
         System.out.println(home.getFiled());
