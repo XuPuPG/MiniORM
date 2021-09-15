@@ -1,6 +1,6 @@
 package ddd.domain.factory;
 
-import ddd.domain.home.IPersistenceStrategy;
+import ddd.domain.persistence.IPersistenceStrategy;
 import ddd.model.entity.IHome;
 
 public interface PersistenceStrategyFactory{

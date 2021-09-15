@@ -1,6 +1,6 @@
 package ddd.domain.repository;
 
-import ddd.domain.home.IPersistenceStrategy;
+import ddd.domain.persistence.IPersistenceStrategy;
 import ddd.model.entity.IHome;
 
 //интерфейс репозитория уровня домена

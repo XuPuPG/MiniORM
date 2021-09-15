@@ -1,6 +1,6 @@
 package ddd.model.common;
 
-import ddd.domain.home.IPersistenceStrategy;
+import ddd.domain.persistence.IPersistenceStrategy;
 import ddd.model.persistence.PERSIST;
 
 public interface PersistenceEntity<T>{

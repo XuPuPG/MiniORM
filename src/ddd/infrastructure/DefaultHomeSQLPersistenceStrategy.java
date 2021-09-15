@@ -1,6 +1,6 @@
 package ddd.infrastructure;
 
-import ddd.domain.home.IPersistenceStrategy;
+import ddd.domain.persistence.IPersistenceStrategy;
 import ddd.model.entity.IHome;
 import ddd.model.persistence.OPERATION;
 
