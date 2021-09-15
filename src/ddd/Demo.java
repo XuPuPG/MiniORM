@@ -21,12 +21,11 @@ public class Demo {
         //стратегия операций над сущностью, загрузка, слияние, обновление, добавление
         //стратегию всегда можно поменять или написать новую для более направленного получения данных из базы
         home.setPersistenceStrategy(defaultHomePersistenceStrategy);
-        home.getPersistenceStrategy().withEntity(home);
+        home.getPersistenceStrategy().prepareEntity(home, OPERATION.REFRESH);
 
         System.out.println(home.getFiled());
 
         //добавление в базу только что полученной сущности
-        home.getPersistenceStrategy().prepareTo(OPERATION.PERSIST);
         homeRepository.explain(home.getPersistenceStrategy());
 
         System.out.println(home.getFiled());

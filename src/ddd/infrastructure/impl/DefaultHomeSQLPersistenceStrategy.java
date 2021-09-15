@@ -1,72 +1,67 @@
 package ddd.infrastructure.impl;
 
 import ddd.domain.persistence.IPersistenceStrategy;
-import ddd.infrastructure.DefaultSQLPersistence;
+import ddd.infrastructure.SQLPersistenceMapper;
 import ddd.infrastructure.ResultSet;
 import ddd.infrastructure.SQLHome;
 import ddd.model.entity.IHome;
 import ddd.model.persistence.OPERATION;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.function.Function;
 
 //конкретная реализация SQL стратегии репозитория
-public class DefaultHomeSQLPersistenceStrategy implements DefaultSQLPersistence, IPersistenceStrategy<IHome> {
-    ResultSet resultSet;
+public class DefaultHomeSQLPersistenceStrategy implements SQLPersistenceMapper, IPersistenceStrategy<IHome> {
     OPERATION operation;
+    List<IHome> homes;
 
-    List<IHome> homes = new ArrayList<>();
-    SQLHome home;
-
-
-    @Override
-    public void getQuery() {}
-
-    public void refresh() {
+    public void refresh(Function<String, ResultSet> queryResult) {
+        ResultSet resultSet = queryResult.apply("SELECT FROM....");
         /*
          * Работа с result set
          * доступ к модели на уровня поля
          * "123" это из resultSet
          * */
 
-        home.filed = "123";
+        homes.forEach(x-> {
+            if(x!=null)
+                ((SQLHome) x).filed = "123";
+        });
     }
 
-    public void persist() {}
+    public void persist(Function<String, ResultSet> queryResult) {}
 
-    public void merge() {}
+    public void merge(Function<String, ResultSet> queryResult) {}
 
-    public void remove() {}
-
-    @Override
-    public void withEntity(IHome home) {
-        this.home = (SQLHome) home;
-    }
+    public void remove(Function<String, ResultSet> queryResult) {}
 
     @Override
-    public void withEntities(List<IHome> homes) {
-        this.homes = homes;
+    public void prepareEntity(IHome home, OPERATION operation) {
+        this.homes = Collections.singletonList(home);
     }
 
     @Override
-    public void withResultSet(ResultSet resultSet) {
-        this.resultSet = resultSet;
+    public void prepareEntities(List<IHome> homes, OPERATION operation) {
+        this.homes = Collections.unmodifiableList(homes);
+    }
+
+    @Override
+    public void withResultSet(Function<String, ResultSet> queryResult) {
         switch (operation){
             case REFRESH:
-                refresh();
+                refresh(queryResult);
                 break;
             case PERSIST:
-                persist();
+                persist(queryResult);
                 break;
             case MERGE:
-                merge();
+                merge(queryResult);
                 break;
             case REMOVE:
-                remove();
+                remove(queryResult);
                 break;
         }
-
-        this.operation = null;
     }
 
     @Override

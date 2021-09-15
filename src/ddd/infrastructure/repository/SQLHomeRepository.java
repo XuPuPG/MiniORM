@@ -2,7 +2,7 @@ package ddd.infrastructure.repository;
 
 import ddd.domain.persistence.IPersistenceStrategy;
 import ddd.domain.repository.IHomeRepository;
-import ddd.infrastructure.DefaultSQLPersistence;
+import ddd.infrastructure.SQLPersistenceMapper;
 import ddd.infrastructure.ResultSet;
 import ddd.model.entity.IHome;
 
@@ -15,10 +15,12 @@ public class SQLHomeRepository implements IHomeRepository {
 
     @Override
     public void explain(IPersistenceStrategy<IHome> defaultHomePersistenceStrategy){
-        DefaultSQLPersistence defaultHomePersistenceStrategy1 = (DefaultSQLPersistence) defaultHomePersistenceStrategy;
+        SQLPersistenceMapper defaultHomePersistenceStrategy1 = (SQLPersistenceMapper) defaultHomePersistenceStrategy;
 
-        defaultHomePersistenceStrategy1.getQuery(); //выполнить запрос и вернет resultset
-        ResultSet resultSet = new ResultSet();
-        defaultHomePersistenceStrategy1.withResultSet(resultSet);
+        defaultHomePersistenceStrategy1.withResultSet(sql ->
+        {
+            //выполнить sql
+            return new ResultSet();
+        });
     }
 }
