@@ -1,6 +1,7 @@
 package ddd.infrastructure;
 
 import ddd.domain.persistence.IPersistenceStrategy;
+import ddd.infrastructure.impl.HomeImpl;
 import ddd.model.common.IPersistenceEntitySettings;
 import ddd.model.entity.IHome;
 import ddd.model.persistence.PERSIST;

@@ -1,6 +1,9 @@
-package ddd.infrastructure;
+package ddd.infrastructure.impl;
 
 import ddd.domain.persistence.IPersistenceStrategy;
+import ddd.infrastructure.DefaultSQLPersistence;
+import ddd.infrastructure.ResultSet;
+import ddd.infrastructure.SQLHome;
 import ddd.model.entity.IHome;
 import ddd.model.persistence.OPERATION;
 

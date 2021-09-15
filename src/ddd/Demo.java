@@ -3,10 +3,7 @@ package ddd;
 import ddd.application.CompositionRoot;
 import ddd.domain.repository.IHomeRepository;
 import ddd.domain.factory.PersistenceStrategyFactory;
-import ddd.infrastructure.SQLHome;
-import ddd.infrastructure.SQLHomeRepository;
 import ddd.infrastructure.factory.SQLPersistenceStrategyFactory;
-import ddd.infrastructure.HomeImpl;
 import ddd.model.entity.IHome;
 import ddd.model.persistence.OPERATION;
 

@@ -2,7 +2,7 @@ package ddd.infrastructure.factory;
 
 import ddd.domain.factory.PersistenceStrategyFactory;
 import ddd.domain.persistence.IPersistenceStrategy;
-import ddd.infrastructure.DefaultHomeSQLPersistenceStrategy;
+import ddd.infrastructure.impl.DefaultHomeSQLPersistenceStrategy;
 import ddd.model.entity.IHome;
 
 public class SQLPersistenceStrategyFactory implements PersistenceStrategyFactory {

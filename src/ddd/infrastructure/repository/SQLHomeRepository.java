@@ -1,7 +1,9 @@
-package ddd.infrastructure;
+package ddd.infrastructure.repository;
 
 import ddd.domain.persistence.IPersistenceStrategy;
 import ddd.domain.repository.IHomeRepository;
+import ddd.infrastructure.DefaultSQLPersistence;
+import ddd.infrastructure.ResultSet;
 import ddd.model.entity.IHome;
 
 //конкретный репозиторий

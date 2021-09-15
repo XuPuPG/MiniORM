@@ -1,4 +1,4 @@
-package ddd.infrastructure;
+package ddd.infrastructure.impl;
 
 import ddd.model.entity.IHome;
 import ddd.model.common.StandardEntityImpl;
