@@ -27,5 +27,4 @@ public abstract class HomeImpl extends StandardEntityImpl<Integer> implements IH
         if(number > 10) throw new IllegalArgumentException();
         this.number = number;
     }
-
 }

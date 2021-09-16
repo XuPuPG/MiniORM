@@ -1,4 +1,4 @@
-package ddd.domain.persistence;
+package ddd.model.common;
 
 import ddd.model.persistence.OPERATION;
 

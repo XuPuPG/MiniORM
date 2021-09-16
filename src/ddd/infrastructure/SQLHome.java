@@ -1,6 +1,6 @@
 package ddd.infrastructure;
 
-import ddd.domain.persistence.IPersistenceStrategy;
+import ddd.model.common.IPersistenceStrategy;
 import ddd.infrastructure.impl.HomeImpl;
 import ddd.model.common.IPersistenceEntitySettings;
 import ddd.model.entity.IHome;
@@ -18,6 +18,7 @@ public class SQLHome extends HomeImpl implements IPersistenceEntitySettings {
         if(PERSISTENCE == PERSIST.PERSISTENCE){
             // sql запрос в базу который обновит номер
         }
+
     }
 
     @Override

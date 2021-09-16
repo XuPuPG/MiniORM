@@ -1,10 +1,8 @@
 package ddd;
 
 import ddd.application.CompositionRoot;
-import ddd.domain.persistence.IPersistenceStrategy;
+import ddd.model.common.IPersistenceStrategy;
 import ddd.domain.repository.IHomeRepository;
-import ddd.domain.factory.IPersistenceStrategyFactory;
-import ddd.infrastructure.factory.SQLPersistenceStrategyFactory;
 import ddd.model.entity.IHome;
 import ddd.model.persistence.OPERATION;
 
@@ -15,13 +13,24 @@ public class Demo {
         CompositionRoot compositionRoot = new CompositionRoot();
 
         IHome home = compositionRoot.getEntityFactory().createHome();
-        IHomeRepository homeRepository = compositionRoot.getRepositoryFactory().getHomeRepository();
-        IPersistenceStrategy<IHome> defaultHomePersistenceStrategy = compositionRoot.getPersistenceStrategyFactory().getDefaultHomePersistenceStrategy();
+        IHome home2 = compositionRoot.getEntityFactory().createHome();
+
+        IHomeRepository<IHome> homeRepository = compositionRoot.getRepositoryFactory().getHomeRepository();
 
         //стратегия операций над сущностью, загрузка, слияние, обновление, добавление
         //стратегию всегда можно поменять или написать новую для более направленного получения данных из базы
-        home.setPersistenceStrategy(defaultHomePersistenceStrategy);
+        home.setPersistenceStrategy(compositionRoot.getPersistenceStrategyFactory().getDefaultHomePersistenceStrategy());
+        home2.setPersistenceStrategy(compositionRoot.getPersistenceStrategyFactory().getDefaultHomePersistenceStrategy());
+
         home.getPersistenceStrategy().prepareEntity(home, OPERATION.REFRESH);
+        home2.getPersistenceStrategy().prepareEntity(home2, OPERATION.PERSIST);
+
+        System.out.println(home.getPersistenceStrategy());
+        System.out.println(home2.getPersistenceStrategy());
+
+        System.out.println(home.getPersistenceStrategy());
+        System.out.println(home2.getPersistenceStrategy());
+
 
         System.out.println(home.getFiled());
 
@@ -29,6 +38,8 @@ public class Demo {
         homeRepository.explain(home.getPersistenceStrategy());
 
         System.out.println(home.getFiled());
+
+
 
         //меняем
         home.setNumber(4);

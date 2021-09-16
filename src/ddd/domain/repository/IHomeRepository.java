@@ -1,15 +1,15 @@
 package ddd.domain.repository;
 
-import ddd.domain.persistence.IPersistenceStrategy;
+import ddd.model.common.IPersistenceStrategy;
 import ddd.model.entity.IHome;
 
 //интерфейс репозитория уровня домена
-public interface IHomeRepository {
+public interface IHomeRepository<T extends IHome> {
     void findByFiled(String filed);
 
     /**
      * Выполняет заданную операцию постоянства с сущностью
      * @param defaultHomePersistenceStrategy настроенная стратегия, должна содержать сущность и
      */
-    void explain(IPersistenceStrategy<IHome> defaultHomePersistenceStrategy);
+    void explain(IPersistenceStrategy<T> defaultHomePersistenceStrategy);
 }
